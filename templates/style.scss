@@ -27,6 +27,7 @@ p {
 span.cat {
   font-size: 18px;
   padding-left: 10px;
+  font-weight: bold;
 }
 a,
 button {
@@ -208,11 +209,10 @@ a em {
 MENU
 ---------------------------------*/
 #navbar {
-  width: 210px;
   background-image: linear-gradient(to left, rgb(250, 183, 144), white);;
   min-height: calc(100vh - 75px);
   overflow-y: hidden;
-  transition: all 0.25s ease-out;
+  transition: all 0.25s ease;
   position:relative;
   animation: animate-width 1.2s 1 ease-in-out;
 }
@@ -222,90 +222,40 @@ MENU
   padding:0 20px;
   margin-top:20px;
 }
+
 #navbar ul li{
-min-height: 35px;
 margin-bottom:20px;
 font-size:15px;
-font-weight: bold;
-  
 }
+
 #navbar ul li a{
 color:#606060;
 font-size:14px;
 text-decoration: none;
-
 }
+
 #navbar ul li i{
  font-size:17px;
   color:black;
   margin-right:8px;
 }
-/*toggle classes when menu opened or closed*/
+/*Class utilisé pour le JS, determine la largeur et l'opacité de la side nav quand elle est fermé */
 .hide-navbar {
   width:0;
   opacity:0;
 }
-// Animate the size, outside
-.pulse:hover, 
-.pulse:focus {
-  animation: pulse 1s;
-  border-radius: 20%;
-  box-shadow: 0 0 0 2em rgba(yellow,0);
+
+.show-navbar {
+  width: 250px;
+  opacity:1;
 }
 
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 var(--hover); }
-}
-
-.avatar {
-    vertical-align: middle;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-
-@keyframes animate-width {
-    0%, 40% {
-      width: 0px;
-    }
-    100% {
-      width: 216px;
-    }
-  }
-
-// Size can also be negative; see how it's smaller than the element
-.raise:hover,
-.raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
-}
-
-// Animating from the bottom
-.up:hover,
-.up:focus {
-  box-shadow: inset 0 -3.25em 0 0 var(--hover);
-}
-
-$colors: (
-  pulse: #ef6eae, 
-  raise: #ffa260, 
- 
-);
-
-// Sass variables compile to a static string; CSS variables are dynamic and inherited
-  // Loop through the map and set CSS custom properties using Sass variables
-@each $button, $color in $colors {
-  .#{$button} {
-    --color: #{$color};
-    --hover: #{adjust-hue($color, 45deg)};
-  }
-}
 
 .hidden-navbar-content {
   width: 100vw;
 }
 .opened-navbar-content {
-  width: calc(100vw - 216px);
+  width: calc(100vw - 250px);
 }
 
 .hidden-navbar-header {
@@ -371,4 +321,59 @@ $colors: (
 .hidden-navbar-header .brand-wrapper, .opened-navbar-header .brand-wrapper {
   width: 90px;
 }
+}
+// Animate the size, outside
+.pulse:hover, 
+.pulse:focus {
+  animation: pulse 1s;
+  border-radius: 20%;
+  box-shadow: 0 0 0 2em rgba(yellow,0);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 var(--hover); }
+}
+
+.avatar {
+    vertical-align: middle;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+@keyframes animate-width {
+    0%, 40% {
+      width: 0px;
+    }
+    100% {
+      width: 265px;
+    }
+  }
+
+// Size can also be negative; see how it's smaller than the element
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+// Animating from the bottom
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+
+$colors: (
+  pulse: #ef6eae, 
+  raise: #ffa260, 
+ 
+);
+
+// Sass variables compile to a static string; CSS variables are dynamic and inherited
+  // Loop through the map and set CSS custom properties using Sass variables
+@each $button, $color in $colors {
+  .#{$button} {
+    --color: #{$color};
+    --hover: #{adjust-hue($color, 45deg)};
+  }
 }
