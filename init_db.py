@@ -15,14 +15,10 @@ cursor = db.cursor()
 # Données des uploads
 cursor.execute("DROP TABLE IF EXISTS posts")
 cursor.execute("""CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT,
-                                   title VARCHAR(500) NOT NULL,
-                                   description VARCHAR(500) NOT NULL,
-                                   category VARCHAR(50) NOT NULL,
-                                   image_url VARCHAR(200) NOT NULL,
-                                   category_id INTEGER NOT NULL,
-                                   CONSTRAINT fk_categories
-                                        FOREIGN KEY (category_id)
-                                        REFERENCES categories(category_id))""")
+                                   title VARCHAR(500),
+                                   description VARCHAR(500),
+                                   category VARCHAR(50),
+                                   path VARCHAR(500) NOT NULL)""")
 
 
 cursor.execute("DROP TABLE IF EXISTS commentaries")
