@@ -19,7 +19,6 @@ h6 {
   font-family: "Raleway", sans-serif;
   font-weight: 400;
   letter-spacing: -1px;
-  color:orange;
 }
 p {
   font-family: "Raleway", sans-serif;
@@ -399,7 +398,7 @@ Flexbox is used as a fallback so that browsers which don't support grid will sti
   text-transform: uppercase;
   font-weight: 700;
   display: block;
-  background-image: linear-gradient(to bottom, rgb(250, 183, 144), white);
+  background-image: linear-gradient(to bottom, rgb(250, 183, 144), #8798ad);
   -webkit-background-clip: text;
   color: transparent;
   letter-spacing: .2rem;
