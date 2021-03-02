@@ -125,6 +125,10 @@ a em {
 .em-red {
   background-color: red;
 }
+a[href^="https"]::before {
+  content: "🔗 ";
+}
+
 /*============== SEARCH BAR ANIME =============*/
 
 .fa-search{
@@ -137,7 +141,7 @@ input[type=text] {
   margin-left: 30px;
   box-sizing: border-box;
   border: 2px solid rgb(201, 150, 150);
-  border-radius: 8px;
+  border-radius: 8px 42% 42% 8px;
   font-size: 16px;
   background-color: white;
   background-image: url('../img/search.png');
