@@ -213,7 +213,6 @@ MENU
 #navbar {
   background-image: linear-gradient(to left, rgb(250, 183, 144), white);;
   min-height: calc(100vh - 75px);
-  overflow-y: hidden;
   transition: all 0.25s ease;
   position:relative;
   animation: animate-width 1.2s 1 ease-in-out;
@@ -223,6 +222,8 @@ MENU
   margin:0;
   padding:0 20px;
   margin-top:20px;
+  position: sticky;
+  top: 0;
 }
 
 #navbar ul li{
