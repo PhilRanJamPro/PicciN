@@ -36,7 +36,7 @@ def download_file(name):
 def index():
     db = get_db()
     pictures = db.execute("SELECT path FROM posts")
-    return render_template('index.html', all_pictures=pictures)
+    return render_template('index.html', all_pictures=pictures, title="HOT")
 
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
@@ -56,12 +56,18 @@ def upload_file():
             db.commit()
     return redirect(url_for('index'))
 
+@app.route("/<path>")
+def show_pic(path):
+    db = get_db()
+    url = path[2:-3]
+    pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+    return render_template('index.html', all_pictures=pictures, title="test")
 
-@app.route("/<category>")
+@app.route("/category/<category>")
 def show_category(category):
     db = get_db()
     pictures = db.execute("SELECT path FROM posts WHERE category=?", [category])
-    return render_template('index.html', all_pictures=pictures)
+    return render_template('index.html', all_pictures=pictures, title=category)
 
 
 
