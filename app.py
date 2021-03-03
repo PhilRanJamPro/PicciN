@@ -11,7 +11,7 @@ from werkzeug.utils import secure_filename
 app = Flask(__name__)
 DATABASE = 'app.db'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-UPLOAD_FOLDER = 'uploads'
+UPLOAD_FOLDER = '../uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -60,10 +60,13 @@ def upload_file():
 def show_pic(path):
     db = get_db()
     url = path[2:-3]
+    print(url)
     pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
     return render_template('index.html', all_pictures=pictures, title="test")
 
-@app.route("/category/<category>")
+
+
+@app.route("/categories/<category>")
 def show_category(category):
     db = get_db()
     pictures = db.execute("SELECT path FROM posts WHERE category=?", [category])
