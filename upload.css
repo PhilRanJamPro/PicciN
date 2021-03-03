@@ -29,9 +29,10 @@ h1 {
 
 .btn.btn-primary {
   background-color: #FAB790;
-  border-color: #FAB790;
-  outline: none;
-  margin: 0 auto;
+    border-color: #FAB790;
+    outline: none;
+    padding-bottom: 9px;
+    font-size: 1.25rem;
 }
 .btn.btn-primary:hover {
   background-color: #f8975f;
