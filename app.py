@@ -62,7 +62,9 @@ def show_pic(path):
     url = path[2:-3]
     print(url)
     pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
-    return render_template('index.html', all_pictures=pictures, title="test")
+    titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+    a = titre.fetchone()
+    return render_template('index.html', all_pictures=pictures, title=a[0])
 
 
 
