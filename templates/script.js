@@ -11,9 +11,5 @@
       var mainheader = $('#main-header');
     mainheader.toggleClass('hidden-navbar-header opened-navbar-header');
 	})
-<<<<<<< HEAD
-})();
-=======
 })();
 
->>>>>>> e51dd730b9b9fd29ad194881ab7026fe0e6b2f9d
