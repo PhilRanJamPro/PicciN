@@ -62,8 +62,13 @@ HEADER
 
 ==========================================================================*/
 #main-header {
+<<<<<<< HEAD
   background-image: -webkit-gradient(linear, left top, left bottom, from(#fab790), to(white));
   background-image: linear-gradient(#fab790, white);
+=======
+  background: -webkit-gradient(linear, left top, left bottom, from(#fab790), to(white));
+  background: linear-gradient(#fab790, white);
+>>>>>>> e51dd730b9b9fd29ad194881ab7026fe0e6b2f9d
   height: 75px;
 }
 
@@ -90,6 +95,10 @@ HEADER
 .header-nav-wrapper {
   width: calc(100% - 500px);
   padding-right: 10px;
+<<<<<<< HEAD
+=======
+  margin: 0 auto;
+>>>>>>> e51dd730b9b9fd29ad194881ab7026fe0e6b2f9d
 }
 
 .header-nav-wrapper ul {
@@ -153,6 +162,7 @@ a em {
   background-color: red;
 }
 
+<<<<<<< HEAD
 /*Search bar*/
 #header-search-bar {
   -webkit-box-sizing: border-box;
@@ -184,6 +194,40 @@ a em {
   font-size: 15px;
 }
 
+=======
+a[href^="https"]::before {
+  content: "🔗 ";
+}
+
+/*============== SEARCH BAR ANIME =============*/
+.fa-search {
+  margin-left: 50px;
+}
+
+input[type=text] {
+  width: 200px;
+  height: 40px;
+  margin-left: 30px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid #c99696;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url("../img/search.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 20px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 130%;
+}
+
+/*===========  END SEARCH BAR ANIME =============*/
+>>>>>>> e51dd730b9b9fd29ad194881ab7026fe0e6b2f9d
 /*User*/
 .user-wrapper {
   width: 250px;
