@@ -12,3 +12,4 @@
     mainheader.toggleClass('hidden-navbar-header opened-navbar-header');
 	})
 })();
+
