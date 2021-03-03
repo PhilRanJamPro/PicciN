@@ -61,7 +61,7 @@ HEADER
 
       </li>
 
-      <li class=" d-none d-md-block d-lg-block d-xl-block"><a href="/uploads" target="_blank"><i class="fas fa-upload"></i></a>
+      <li class=" d-none d-md-block d-lg-block d-xl-block"><a href="/upload_page" target="_blank"><i class="fas fa-upload"></i></a>
 
       </li>
 
@@ -114,19 +114,19 @@ MENU
     
     <li> <a href="/" class="pulse"><img src="https://media.giphy.com/media/FpKixMu71s8mi6SSLE/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Hot</span></a></li>
     <li> <a href="/" class="pulse"><img src="https://media.giphy.com/media/WOfxkQGhBYwEv0IrHs/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Trending</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Animals') }}" class="pulse"><img src="https://media.giphy.com/media/YPY6df50NaYve/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Animals</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Auto') }}" class="pulse"><img src="https://media.giphy.com/media/3ohs7K8l2xVqyHwfGE/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Auto</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Cinema') }}" class="pulse"><img src="https://media.giphy.com/media/UGcvSDgGsKFby/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Cinema</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Conspiracy') }}" class="pulse"><img src="https://media.giphy.com/media/LX3Q9vcjwhKYE/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Conspiracy</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Fashion') }}" class="pulse"><img src="https://media.giphy.com/media/3o6ZtkHCYNgpWLyROM/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Fashion</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Funny') }}" class="pulse"><img src="https://media.giphy.com/media/804TNmnYLfNao/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Funny</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Food') }}" class="pulse"><img src="https://media.giphy.com/media/pjhdUQMV4ZRumCd1nH/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Food</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Music') }}" class="pulse"><img src="https://media.giphy.com/media/wsLoMTYhovY567WydB/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Music</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='NSFW') }}" class="pulse"><img src="https://media.giphy.com/media/7i8OXsarmJqXFClWey/giphy.gif" alt="Avatar" class="avatar"><span class="cat">NSFW</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Politics') }}" class="pulse"><img src="https://media.giphy.com/media/3o6Zt3T1DrAdQpGJGw/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Politics</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Technology') }}" class="pulse"><img src="https://media.giphy.com/media/20NLMBm0BkUOwNljwv/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Technology</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Games') }}" class="pulse"><img src="https://media.giphy.com/media/fXncjSnU8BoYvqHulh/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Games</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Sports') }}" class="pulse"><img src="https://media.giphy.com/media/WvuTFk2IN7jxoLVDkP/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Sport</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path=Animals) }}" class="pulse"><img src="https://media.giphy.com/media/YPY6df50NaYve/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Animals</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Auto') }}" class="pulse"><img src="https://media.giphy.com/media/3ohs7K8l2xVqyHwfGE/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Auto</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Cinema') }}" class="pulse"><img src="https://media.giphy.com/media/UGcvSDgGsKFby/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Cinema</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Conspiracy') }}" class="pulse"><img src="https://media.giphy.com/media/LX3Q9vcjwhKYE/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Conspiracy</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Fashion') }}" class="pulse"><img src="https://media.giphy.com/media/3o6ZtkHCYNgpWLyROM/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Fashion</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Funny') }}" class="pulse"><img src="https://media.giphy.com/media/804TNmnYLfNao/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Funny</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Food') }}" class="pulse"><img src="https://media.giphy.com/media/pjhdUQMV4ZRumCd1nH/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Food</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Music') }}" class="pulse"><img src="https://media.giphy.com/media/wsLoMTYhovY567WydB/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Music</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='NSFW') }}" class="pulse"><img src="https://media.giphy.com/media/7i8OXsarmJqXFClWey/giphy.gif" alt="Avatar" class="avatar"><span class="cat">NSFW</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Politics') }}" class="pulse"><img src="https://media.giphy.com/media/3o6Zt3T1DrAdQpGJGw/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Politics</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Technology') }}" class="pulse"><img src="https://media.giphy.com/media/20NLMBm0BkUOwNljwv/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Technology</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Games') }}" class="pulse"><img src="https://media.giphy.com/media/fXncjSnU8BoYvqHulh/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Games</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Sports') }}" class="pulse"><img src="https://media.giphy.com/media/WvuTFk2IN7jxoLVDkP/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Sport</span></a></li>
     <li><footer>&copy; 2021 Picnic. All rights reserved.</footer></li>
   </ul>
 </nav>

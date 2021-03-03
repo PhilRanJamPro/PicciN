@@ -7,11 +7,11 @@ from werkzeug.utils import secure_filename
 
 
 
-
 app = Flask(__name__)
+cat = ["Funny", "NSFW", "Animals", "Auto", "Games", "Cinema", "Conspiracy", "Fashion", "Food", "Politics", "Technology", "Sports"]
 DATABASE = 'app.db'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-UPLOAD_FOLDER = '/uploads'
+UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
@@ -33,7 +33,7 @@ def index():
     return render_template('index.html', all_pictures=pictures, title="HOT")
 
 
-@app.route("/uploads", methods=['GET', 'POST'])
+@app.route("/upload_page", methods=['GET', 'POST'])
 def upload_page():
     return render_template('upload.html', title="Upload")
 
@@ -60,19 +60,18 @@ def upload_file():
 @app.route("/<path>")
 def show_pic(path):
     db = get_db()
-    url = path[2:-3]
-    print(url)
-    pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
-    titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
-    a = titre.fetchone()
-    return render_template('index.html', all_pictures=pictures, title=a[0])
+    if path in cat:
+        cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
+        return render_template('index.html', all_pictures=cat_pictures, title=path)
+    else:
+        url = path[2:-3]
+        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+        a = titre.fetchone()
+        return render_template('index.html', all_pictures=pictures)
 
 
-@app.route("/categories/<category>")
-def show_category(category):
-    db = get_db()
-    pictures = db.execute("SELECT path FROM posts WHERE category=?", [category])
-    return render_template('index.html', all_pictures=pictures, title=category)
+
 
 @app.route("/<path>", methods=['GET', 'POST'])
 def add_comment(path):
@@ -93,16 +92,6 @@ def pic_db():
         posts.append({"id": post[0], "path": post[1],
                       "title": post[2], "category": post[3]})
     return jsonify(posts)
-
-
-""" @app.route("/<category>", methods=["POST"])
-def show_category(category):
-    db = get_db()
-    pictures = db.execute("SELECT path FROM posts WHERE category=?", category)
-    return render_template('index.html', all_pictures=pictures)
- """
-
-
 
 
 if __name__ == '__main__':
