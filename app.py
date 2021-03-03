@@ -65,6 +65,15 @@ def show_category(category):
     pictures = db.execute("SELECT path FROM posts WHERE category=?", [category])
     return render_template('index.html', all_pictures=pictures, title=category)
 
+@app.route("/<path>", methods=['GET', 'POST'])
+def add_comment(path):
+    if request.method == "POST":
+        data = request.form.to_dict(flat=True)
+        commentaire = data['comment']
+        url = path[2:-3]
+        db = get_db()
+        pic_id = db.execute("SELECT id FROM posts where path=?", [url])
+        db.execute("INSERT INTO commentaries (content) VALUES(?) WHERE post_id=?", [commentaire, pic_id])
 
 @app.route("/pic_db")
 def pic_db():
