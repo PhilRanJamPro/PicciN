@@ -37,7 +37,7 @@ cursor.execute("""CREATE TABLE categories (id INTEGER PRIMARY KEY \
                 AUTOINCREMENT,
                             name VARCHAR(200) NOT NULL)""")
 
-for name in ["Funny", "NSFW", "Anime & Manga", "Cars", "Gaming", "GIF", "Meme"]:
+for name in ["Funny", "NSFW", "Animals", "Auto", "Games", "Cinema", "Conspiracy", "Fashion", "Food", "Politics", "Technology", "Sport"]:
     cursor.execute("INSERT INTO categories (name) VALUES (?)", (name,))
 
 db.commit()

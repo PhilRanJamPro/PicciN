@@ -6,17 +6,11 @@ import os
 from werkzeug.utils import secure_filename
 
 
-
-
 app = Flask(__name__)
 DATABASE = 'app.db'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 UPLOAD_FOLDER = '../uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-
-
 
 
 def get_db():
@@ -28,8 +22,6 @@ def get_db():
 @app.route('/uploads/<name>')
 def download_file(name):
     return send_from_directory(app.config['UPLOAD_FOLDER'], name)
-
-
 
 
 @app.route('/')
@@ -67,13 +59,11 @@ def show_pic(path):
     return render_template('index.html', all_pictures=pictures, title=a[0])
 
 
-
 @app.route("/categories/<category>")
 def show_category(category):
     db = get_db()
     pictures = db.execute("SELECT path FROM posts WHERE category=?", [category])
     return render_template('index.html', all_pictures=pictures, title=category)
-
 
 
 @app.route("/pic_db")
