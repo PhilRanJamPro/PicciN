@@ -57,31 +57,31 @@ def upload_file():
             db.commit()
     return redirect(url_for('index'))
 
-@app.route("/<path>")
+@app.route("/<path>", methods=["GET", "POST"])
 def show_pic(path):
-    db = get_db()
-    if path in cat:
-        cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
-        return render_template('index.html', all_pictures=cat_pictures, title=path)
+    if request.method == 'GET':
+        db = get_db()
+        if path in cat:
+            cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
+            return render_template('index.html', all_pictures=cat_pictures, title=path)
+        else:
+            url = path[2:-3]
+            pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+            titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+            a = titre.fetchone()
+            return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
     else:
-        url = path[2:-3]
-        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
-        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
-        a = titre.fetchone()
-        return render_template('index.html', all_pictures=pictures)
-
-
-
-
-@app.route("/<path>", methods=['GET', 'POST'])
-def add_comment(path):
-    if request.method == "POST":
         data = request.form.to_dict(flat=True)
         commentaire = data['comment']
         url = path[2:-3]
         db = get_db()
         pic_id = db.execute("SELECT id FROM posts where path=?", [url])
-        db.execute("INSERT INTO commentaries (content) VALUES(?) WHERE post_id=?", [commentaire, pic_id])
+        db.execute(""""INSERT INTO commentaries (content) VALUES (?)
+                    SELECT id
+                    FROM posts
+                    WHERE id =?""", [commentaire, pic_id])
+    return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
+
 
 @app.route("/pic_db")
 def pic_db():
