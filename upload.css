@@ -1,0 +1,63 @@
+/*
+ * Styles for demo only
+ */
+ body {
+  background-color: #FAB790;
+  margin: 4rem;
+}
+
+p {
+  text-align: center;
+  margin-top: 30px;
+}
+
+select {
+  margin: 30px auto;
+  border-radius: 8px;
+  display:block;
+}
+h1 {
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: 600;
+  margin: 0 auto;
+  background: -webkit-linear-gradient(#606060, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.btn.btn-primary {
+  background-color: #FAB790;
+  border-color: #FAB790;
+  outline: none;
+  margin: 0 auto;
+}
+.btn.btn-primary:hover {
+  background-color: #f8975f;
+  border-color: #f8975f;
+}
+.btn.btn-primary:active, .btn.btn-primary:focus {
+  background-color: #fbc7a8;
+  border-color: #fbc7a8;
+}
+
+.container {
+  padding: 4rem 5rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 45rem;
+  transition: 0.3s;
+  margin: 0 auto;
+
+
+}
+
+.container:hover {
+  box-shadow: 0 8px 16px 0 rgb(63, 58, 58);
+}
+
+.form-example2 {
+  margin-top: 30px;
+}
