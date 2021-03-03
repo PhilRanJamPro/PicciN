@@ -47,12 +47,13 @@ def upload_file():
         data = request.form.to_dict(flat=True)
         category = data['categories']
         title = data['title']
+        description = data['description']
         if file.filename != '':
             filename = secure_filename(file.filename)
             file.save(os.path.join(UPLOAD_FOLDER, filename))
             db = get_db()
-            db.execute("INSERT INTO posts (path, category, title)\
-                        VALUES (?, ?, ?)", [filename, category, title])
+            db.execute("INSERT INTO posts (path, description, category, title)\
+                        VALUES (?, ?, ?, ?)", [filename, description, category, title])
             db.commit()
     return redirect(url_for('index'))
 
