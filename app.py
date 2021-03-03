@@ -32,6 +32,12 @@ def index():
     pictures = db.execute("SELECT path FROM posts")
     return render_template('index.html', all_pictures=pictures, title="HOT")
 
+
+@app.route("/uploads", methods=['GET', 'POST'])
+def upload_page():
+    return render_template('upload.html', title="Upload")
+
+
 @app.route('/upload', methods=['GET', 'POST'])
 def upload_file():
     if request.method == "POST":
