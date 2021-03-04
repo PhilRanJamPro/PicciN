@@ -7,8 +7,8 @@ from werkzeug.utils import secure_filename
 
 
 
-
 app = Flask(__name__)
+cat = ["Funny", "NSFW", "Animals", "Auto", "Games", "Cinema", "Conspiracy", "Fashion", "Food", "Politics", "Technology", "Sports"]
 DATABASE = 'app.db'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 UPLOAD_FOLDER = './uploads'
@@ -33,7 +33,7 @@ def index():
     return render_template('index.html', all_pictures=pictures, title="HOT")
 
 
-@app.route("/uploads", methods=['GET', 'POST'])
+@app.route("/upload_page", methods=['GET', 'POST'])
 def upload_page():
     return render_template('upload.html', title="Upload")
 
@@ -57,32 +57,32 @@ def upload_file():
             db.commit()
     return redirect(url_for('index'))
 
-@app.route("/<path>")
+@app.route("/<path>", methods=["GET", "POST"])
 def show_pic(path):
-    db = get_db()
-    url = path[2:-3]
-    print(url)
-    pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
-    titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
-    a = titre.fetchone()
-    return render_template('index.html', all_pictures=pictures, title=a[0])
-
-
-@app.route("/categories/<category>")
-def show_category(category):
-    db = get_db()
-    pictures = db.execute("SELECT path FROM posts WHERE category=?", [category])
-    return render_template('index.html', all_pictures=pictures, title=category)
-
-@app.route("/<path>", methods=['GET', 'POST'])
-def add_comment(path):
-    if request.method == "POST":
+    if request.method == 'GET':
+        db = get_db()
+        if path in cat:
+            cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
+            return render_template('index.html', all_pictures=cat_pictures, title=path)
+        else:
+            url = path[2:-3]
+            pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+            titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+            a = titre.fetchone()
+            return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
+    else:
         data = request.form.to_dict(flat=True)
         commentaire = data['comment']
+        print(commentaire)
         url = path[2:-3]
+        print(url)
         db = get_db()
-        pic_id = db.execute("SELECT id FROM posts where path=?", [url])
-        db.execute("INSERT INTO commentaries (content) VALUES(?) WHERE post_id=?", [commentaire, pic_id])
+        pictures = db.execute("SELECT id FROM posts WHERE path=?", [url])
+        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+        a = titre.fetchone()
+        db.execute("INSERT INTO commentaries (post_id, content, username) VALUES(?, ?)", [url, commentaire])
+    return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
+
 
 @app.route("/pic_db")
 def pic_db():
@@ -93,16 +93,6 @@ def pic_db():
         posts.append({"id": post[0], "path": post[1],
                       "title": post[2], "category": post[3]})
     return jsonify(posts)
-
-
-""" @app.route("/<category>", methods=["POST"])
-def show_category(category):
-    db = get_db()
-    pictures = db.execute("SELECT path FROM posts WHERE category=?", category)
-    return render_template('index.html', all_pictures=pictures)
- """
-
-
 
 
 if __name__ == '__main__':

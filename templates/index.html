@@ -61,7 +61,7 @@ HEADER
 
       </li>
 
-      <li class=" d-none d-md-block d-lg-block d-xl-block"><a href="/uploads" target="_blank"><i class="fas fa-upload"></i></a>
+      <li class=" d-none d-md-block d-lg-block d-xl-block"><a href="/upload_page" target="_blank"><i class="fas fa-upload"></i></a>
 
       </li>
 
@@ -114,19 +114,19 @@ MENU
     
     <li> <a href="/" class="pulse"><img src="https://media.giphy.com/media/FpKixMu71s8mi6SSLE/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Hot</span></a></li>
     <li> <a href="/" class="pulse"><img src="https://media.giphy.com/media/WOfxkQGhBYwEv0IrHs/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Trending</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Animals') }}" class="pulse"><img src="https://media.giphy.com/media/YPY6df50NaYve/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Animals</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Auto') }}" class="pulse"><img src="https://media.giphy.com/media/3ohs7K8l2xVqyHwfGE/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Auto</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Cinema') }}" class="pulse"><img src="https://media.giphy.com/media/UGcvSDgGsKFby/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Cinema</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Conspiracy') }}" class="pulse"><img src="https://media.giphy.com/media/LX3Q9vcjwhKYE/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Conspiracy</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Fashion') }}" class="pulse"><img src="https://media.giphy.com/media/3o6ZtkHCYNgpWLyROM/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Fashion</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Funny') }}" class="pulse"><img src="https://media.giphy.com/media/804TNmnYLfNao/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Funny</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Food') }}" class="pulse"><img src="https://media.giphy.com/media/pjhdUQMV4ZRumCd1nH/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Food</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Music') }}" class="pulse"><img src="https://media.giphy.com/media/wsLoMTYhovY567WydB/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Music</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='NSFW') }}" class="pulse"><img src="https://media.giphy.com/media/7i8OXsarmJqXFClWey/giphy.gif" alt="Avatar" class="avatar"><span class="cat">NSFW</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Politics') }}" class="pulse"><img src="https://media.giphy.com/media/3o6Zt3T1DrAdQpGJGw/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Politics</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Technology') }}" class="pulse"><img src="https://media.giphy.com/media/20NLMBm0BkUOwNljwv/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Technology</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Games') }}" class="pulse"><img src="https://media.giphy.com/media/fXncjSnU8BoYvqHulh/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Games</span></a></li>
-    <li> <a href="{{ url_for('show_category', category='Sports') }}" class="pulse"><img src="https://media.giphy.com/media/WvuTFk2IN7jxoLVDkP/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Sport</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path=Animals) }}" class="pulse"><img src="https://media.giphy.com/media/YPY6df50NaYve/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Animals</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Auto') }}" class="pulse"><img src="https://media.giphy.com/media/3ohs7K8l2xVqyHwfGE/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Auto</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Cinema') }}" class="pulse"><img src="https://media.giphy.com/media/UGcvSDgGsKFby/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Cinema</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Conspiracy') }}" class="pulse"><img src="https://media.giphy.com/media/LX3Q9vcjwhKYE/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Conspiracy</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Fashion') }}" class="pulse"><img src="https://media.giphy.com/media/3o6ZtkHCYNgpWLyROM/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Fashion</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Funny') }}" class="pulse"><img src="https://media.giphy.com/media/804TNmnYLfNao/giphy.gif"      alt="Avatar" class="avatar"><span class="cat">Funny</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Food') }}" class="pulse"><img src="https://media.giphy.com/media/pjhdUQMV4ZRumCd1nH/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Food</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Music') }}" class="pulse"><img src="https://media.giphy.com/media/wsLoMTYhovY567WydB/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Music</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='NSFW') }}" class="pulse"><img src="https://media.giphy.com/media/7i8OXsarmJqXFClWey/giphy.gif" alt="Avatar" class="avatar"><span class="cat">NSFW</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Politics') }}" class="pulse"><img src="https://media.giphy.com/media/3o6Zt3T1DrAdQpGJGw/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Politics</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Technology') }}" class="pulse"><img src="https://media.giphy.com/media/20NLMBm0BkUOwNljwv/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Technology</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Games') }}" class="pulse"><img src="https://media.giphy.com/media/fXncjSnU8BoYvqHulh/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Games</span></a></li>
+    <li> <a href="{{ url_for('show_pic', path='Sports') }}" class="pulse"><img src="https://media.giphy.com/media/WvuTFk2IN7jxoLVDkP/giphy.gif" alt="Avatar" class="avatar"><span class="cat">Sport</span></a></li>
     <li><footer>&copy; 2021 Picnic. All rights reserved.</footer></li>
   </ul>
 </nav>
@@ -147,6 +147,39 @@ CONTENT
     </div>
     {% endfor %}
   </div>
+  {% if show_comment %}
+  {% for picture in all_pictures %}
+    <div class="gallery-item">
+    <a href="{{ url_for('show_pic', path=picture) }}"><img class="gallery-image" src="{{ config['UPLOAD_FOLDER'] }}/{{ picture[0] }}" style="width: 50%"></a>
+    </div>
+    {% endfor %}
+    <div class="container mt-5">
+      <div class="d-flex justify-content-center row">
+          <div class="col-md-8">
+              <div class="d-flex flex-column comment-section" id="myGroup">
+                  <div class="bg-white p-2">
+                      <div class="d-flex flex-row user-info"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="10">
+                          <div class="d-flex flex-column justify-content-start ml-2"><span class="d-block font-weight-bold name">Marry Andrews</span><span class="date text-black-50">Shared publicly - Jan 2020</span></div>
+                      </div>
+                      <div class="mt-2">
+                          <p class="comment-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                  </div>
+                  <div class="bg-white p-2">
+                      <div class="d-flex flex-row fs-12">
+                          <div class="like p-2 cursor"><i class="fa fa-thumbs-o-up"></i><span class="ml-1">Like</span></div>
+                          <div class="like p-2 cursor action-collapse" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-1" href="#collapse-1"><i class="fa fa-commenting-o"></i><span class="ml-1">Comment</span></div>
+                          <div class="like p-2 cursor action-collapse" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-2" href="#collapse-2"><i class="fa fa-share"></i><span class="ml-1">Share</span></div>
+                      </div>
+                  </div>
+                  <form action="/show_pic" method="post">
+                    <div id="collapse-1" class="bg-light p-2 collapse" data-parent="#myGroup">
+                      <div class="d-flex flex-row align-items-start"><img class="rounded-circle" src="https://i.imgur.com/RpzrMR2.jpg" width="40"><input type="text" id="comment" name=comment required></div>
+                      <div class="mt-2 text-right"><button class="btn btn-primary btn-sm shadow-none" type="submit">Post comment</button><button class="btn btn-outline-primary btn-sm ml-1 shadow-none" type="button">Cancel</button></div>
+                  </div>
+                  </form>
+    {% endif %}
+
 
 </div>
 

@@ -24,11 +24,8 @@ cursor.execute("""CREATE TABLE posts (id INTEGER PRIMARY KEY AUTOINCREMENT,
 cursor.execute("DROP TABLE IF EXISTS commentaries")
 cursor.execute("""CREATE TABLE commentaries (id INTEGER PRIMARY KEY AUTOINCREMENT,
                                    content VARCHAR(5000) NOT NULL,
-                                   username VARCHAR(50) NOT NULL,
-                                   post_id INTEGER NOT NULL,
-                                   CONSTRAINT fk_posts
-                                     FOREIGN KEY (post_id)
-                                     REFERENCES posts(post_id))""")
+                                   username VARCHAR(50),
+                                   path VARCHAR(500) NOT NULL)""")
 
 
 
@@ -37,7 +34,7 @@ cursor.execute("""CREATE TABLE categories (id INTEGER PRIMARY KEY \
                 AUTOINCREMENT,
                             name VARCHAR(200) NOT NULL)""")
 
-for name in ["Funny", "NSFW", "Animals", "Auto", "Games", "Cinema", "Conspiracy", "Fashion", "Food", "Politics", "Technology", "Sport"]:
+for name in ["Funny", "NSFW", "Animals", "Auto", "Games", "Cinema", "Conspiracy", "Fashion", "Food", "Politics", "Technology", "Sports"]:
     cursor.execute("INSERT INTO categories (name) VALUES (?)", (name,))
 
 db.commit()
