@@ -57,7 +57,7 @@ def upload_file():
             db.commit()
     return redirect(url_for('index'))
 
-@app.route("/<path>", methods=["GET", "POST"])
+@app.route("/<path>", methods=["GET"])
 def show_pic(path):
     if request.method == 'GET':
         db = get_db()
@@ -69,19 +69,22 @@ def show_pic(path):
             pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
             titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
             a = titre.fetchone()
-            return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
-    else:
+            return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1), url
+    return redirect(url_for('index'))
+
+
+@app.route("/<url>", methods=["POST"])
+def post_comment(url):
+    if request.method == 'POST':
         data = request.form.to_dict(flat=True)
+        url = request.base_url
         commentaire = data['comment']
-        print(commentaire)
-        url = path[2:-3]
         print(url)
+        print(commentaire)
         db = get_db()
-        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
-        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
-        a = titre.fetchone()
-        db.execute("INSERT INTO commentaries (path, content) VALUES(?, ?)", [url, commentaire])
-    return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
+        db.execute("INSERT INTO commentaries (path, content) VALUES (?, ?)", [url, commentaire])
+        db.commit()
+    return render_template('index.html')
 
 
 @app.route("/pic_db")
@@ -92,6 +95,17 @@ def pic_db():
     for post in cur:
         posts.append({"id": post[0], "path": post[1],
                       "title": post[2], "category": post[3]})
+    return jsonify(posts)
+
+
+
+@app.route("/comm_db")
+def comm_db():
+    db = get_db()
+    cur = db.execute("SELECT content, path FROM commentaries")
+    posts = []
+    for post in cur:
+        posts.append({"content": post[0], "path": post[1]})
     return jsonify(posts)
 
 
