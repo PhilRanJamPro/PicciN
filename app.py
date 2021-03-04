@@ -11,11 +11,7 @@ app = Flask(__name__)
 cat = ["Funny", "NSFW", "Animals", "Auto", "Games", "Cinema", "Conspiracy", "Fashion", "Food", "Politics", "Technology", "Sports"]
 DATABASE = 'app.db'
 ALLOWED_EXTENSIONS = {'pdf', 'png', 'jpg', 'jpeg', 'gif'}
-<<<<<<< HEAD
 UPLOAD_FOLDER = 'uploads'
-=======
-UPLOAD_FOLDER = '../uploads'
->>>>>>> 025042c4d8d4354253fb26c5895bd8d6dc4f97f9
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
