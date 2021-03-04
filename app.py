@@ -73,13 +73,14 @@ def show_pic(path):
     else:
         data = request.form.to_dict(flat=True)
         commentaire = data['comment']
+        print(commentaire)
         url = path[2:-3]
+        print(url)
         db = get_db()
-        pic_id = db.execute("SELECT id FROM posts where path=?", [url])
-        db.execute(""""INSERT INTO commentaries (content) VALUES (?)
-                    SELECT id
-                    FROM posts
-                    WHERE id =?""", [commentaire, pic_id])
+        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+        a = titre.fetchone()
+        db.execute("INSERT INTO commentaries (path, content) VALUES(?, ?)", [url, commentaire])
     return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
 
 
