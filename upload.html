@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Upload your image</title>
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css'>
+<link rel='styleshe.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px; /* 5px rounded corners */
+  margin: 0 20%;et' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css'><link rel="stylesheet" href="./upload.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<h1>UPLOAD  FILES</h1>
+
+
+<div class="container">
+  <form method=post actions='upload' enctype="multipart/form-data">
+      <div class="form-example">
+          <div class="input-group shadow">
+      <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+      <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="img[]" class="d-none">
+      <input type="text" class="form-control form-control-lg" placeholder="Post Title" x-model="fileName" maxlength="50">
+    </div>
+      </div>
+      <div class="form-example2">
+          <div class="input-group shadow">
+      <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
+      <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="img[]" class="d-none">
+      <input type="text" class="form-control form-control-lg" placeholder="Post Description" x-model="fileName"  maxlength="50">
+    </div>
+      </div>
+      <select name="categories" id="categories">
+        <option value="">--Please choose a category--</option>
+        <option value="Animals">Animals</option>
+        <option value="Auto">Auto</option>
+        <option value="Cinema ">Cinema</option>
+        <option value="Conspiracy">Conspiracy</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Funny">Funny</option>
+        <option value="Food">Food</option>
+        <option value="Music">Music</option>
+        <option value="NSFW">NSFW</option>
+        <option value="Politics">Politics</option>
+        <option value="Technology">Technology</option>
+        <option value="Games">Games</option>
+        <option value="Sport">Sport</option>
+        
+      </select>
+ <div class="form-group">
+    <div class="input-group shadow">
+      <p><input class="form-control form-control-lg" type="file" name="file"></p>
+      <p><input class="browse btn btn-primary px-4"  type=submit value="Submit"></p>
+    </div>
+  </div>
+     
+
+  
+    </form>
+  
+  
+</div>
+<!-- partial -->
+  <script src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js'></script>
+</body>
+</html>
