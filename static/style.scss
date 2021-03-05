@@ -54,7 +54,11 @@ HEADER
 
 ==========================================================================*/
 #main-header {
+<<<<<<< HEAD
+  background-image: linear-gradient(rgb(250, 183, 144), white);
+=======
   background: linear-gradient(rgb(250, 183, 144), white);
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
   height: 75px;
 }
 /*Brand elements*/
@@ -65,8 +69,17 @@ HEADER
   transition: all 0.25s ease;
 }
 .brand-wrapper img {
+<<<<<<< HEAD:templates/style.scss
   display: block;
   margin: 0 auto;
+=======
+<<<<<<< HEAD
+  max-width: 70px;
+=======
+  display: block;
+  margin: 0 auto;
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
+>>>>>>> 6c289d54eb1740df0f585e611de226ba328eaf40:static/style.scss
 }
 .brand-wrapper span {
   font-size: 14px;
@@ -77,7 +90,10 @@ HEADER
 .header-nav-wrapper {
   width: calc(100% - 500px);
   padding-right: 10px;
+<<<<<<< HEAD
+=======
   margin: 0 auto;
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
 }
 .header-nav-wrapper ul {
   margin: 0;
@@ -132,6 +148,34 @@ a em {
 .em-red {
   background-color: red;
 }
+<<<<<<< HEAD
+/*Search bar*/
+#header-search-bar {
+  box-sizing: border-box;
+  padding: 0 15px 0 0;
+  margin-left: calc(100% - 420px);
+  width: 200px;
+  border-right: rgba(0, 0, 0, 0.1) solid 1px;
+  height: 75px;
+}
+#header-search-bar button {
+  width: 15%;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+#header-search-bar button:hover {
+  color: #67a5e6;
+}
+#header-search-bar input[type="text"] {
+  width: 80%;
+  height: 30px;
+  border: 0;
+  color: #8798ad;
+  font-weight: 300;
+  font-size: 15px;
+}
+=======
 a[href^="https"]::before {
   content: "🔗 ";
 }
@@ -166,6 +210,7 @@ input[type=text]:focus {
 }
 /*===========  END SEARCH BAR ANIME =============*/
 
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
 /*User*/
 .user-wrapper {
   width: 250px;
@@ -223,6 +268,10 @@ MENU
 #navbar {
   background-image: linear-gradient(to left, rgb(250, 183, 144), white);;
   min-height: calc(100vh - 75px);
+<<<<<<< HEAD
+  overflow-y: hidden;
+=======
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
   transition: all 0.25s ease;
   position:relative;
   animation: animate-width 1.2s 1 ease-in-out;
@@ -232,8 +281,11 @@ MENU
   margin:0;
   padding:0 20px;
   margin-top:20px;
+<<<<<<< HEAD
+=======
   position: sticky;
   top: 0;
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
 }
 
 #navbar ul li{
@@ -363,6 +415,25 @@ text-decoration: none;
     }
   }
 
+<<<<<<< HEAD:templates/style.scss
+=======
+<<<<<<< HEAD
+// Size can also be negative; see how it's smaller than the element
+.raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+}
+
+// Animating from the bottom
+.up:hover,
+.up:focus {
+  box-shadow: inset 0 -3.25em 0 0 var(--hover);
+}
+
+=======
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
+>>>>>>> 6c289d54eb1740df0f585e611de226ba328eaf40:static/style.scss
 $colors: (
   pulse: #ef6eae, 
   raise: #ffa260, 
@@ -494,6 +565,8 @@ Remove or comment-out the code block below to see how the browser will fall-back
 		margin: 0;
 	}
 }
+<<<<<<< HEAD
+=======
 
 // PAGE COMMENTAIRES//////////////////////////////////////////////////////////////
 .card {
@@ -550,3 +623,4 @@ img {
 }
 }
 
+>>>>>>> 9435d493c626acda55f297f09b6cde9381eeb0b2
