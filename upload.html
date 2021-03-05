@@ -34,26 +34,30 @@
       </div>
       <select name="categories" id="categories">
         <option value="">--Please choose a category--</option>
+        <option value="Animals">Animals</option>
+        <option value="Auto">Auto</option>
+        <option value="Cinema ">Cinema</option>
+        <option value="Conspiracy">Conspiracy</option>
+        <option value="Fashion">Fashion</option>
         <option value="Funny">Funny</option>
+        <option value="Food">Food</option>
+        <option value="Music">Music</option>
         <option value="NSFW">NSFW</option>
-        <option value="Anime & manga">Anime & manga</option>
-        <option value="Cars">Cars</option>
-        <option value="Gaming">Gaming</option>
-        <option value="GIF">GIF</option>
-        <option value="Meme">Meme</option>
+        <option value="Politics">Politics</option>
+        <option value="Technology">Technology</option>
+        <option value="Games">Games</option>
+        <option value="Sport">Sport</option>
+        
       </select>
- <div class="form-group" x-data="{ fileName: '' }">
+ <div class="form-group">
     <div class="input-group shadow">
-      <span class="input-group-text px-3 text-muted"><i class="fas fa-image fa-lg"></i></span>
-      <input type="file" x-ref="file" @change="fileName = $refs.file.files[0].name" name="img[]" class="d-none">
-      <input type="text" class="form-control form-control-lg" placeholder="Upload Image" x-model="fileName">
-      <button class="browse btn btn-primary px-4" type="button" x-on:click.prevent="$refs.file.click()"><i class="fas fa-image"></i> Browse</button>
+      <p><input class="form-control form-control-lg" type="file" name="file"></p>
+      <p><input class="browse btn btn-primary px-4"  type=submit value="Submit"></p>
     </div>
   </div>
-      <p><input class="browse btn btn-primary px-4"  type=submit value="Submit"></p>
+     
 
-
-
+  
     </form>
   
   
