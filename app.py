@@ -59,32 +59,31 @@ def upload_file():
 
 @app.route("/<path>", methods=["GET"])
 def show_pic(path):
-    if request.method == 'GET':
-        db = get_db()
-        if path in cat:
-            cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
-            return render_template('index.html', all_pictures=cat_pictures, title=path)
-        else:
-            url = path[2:-3]
-            pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
-            titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
-            a = titre.fetchone()
-            return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1), url
-    return redirect(url_for('index'))
+    db = get_db()
+    if path in cat:
+        cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
+        return render_template('index.html', all_pictures=cat_pictures, title=path)
+    else:
+        url = path[2:-3]
+        
+        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
+        a = titre.fetchone()
+        return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1), url
+
+@app.route("/show_comment/<path>", methods=["POST"])
+def show_comment(path):
+    data = request.form.to_dict(flat=True)
+    commentaire = data['comment']
+    db = get_db()
+    db.execute("INSERT INTO commentaries (path, content) VALUES (?, ?)", [path, commentaire])
+    pictures = db.execute("SELECT path FROM posts WHERE path=?", [path])
+    titre = db.execute("SELECT title FROM posts WHERE path=?", [path])
+    a = titre.fetchone()
+    db.commit()
+    return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
 
 
-@app.route("/<url>", methods=["POST"])
-def post_comment(url):
-    if request.method == 'POST':
-        data = request.form.to_dict(flat=True)
-        url = request.base_url
-        commentaire = data['comment']
-        print(url)
-        print(commentaire)
-        db = get_db()
-        db.execute("INSERT INTO commentaries (path, content) VALUES (?, ?)", [url, commentaire])
-        db.commit()
-    return render_template('index.html')
 
 
 @app.route("/pic_db")
