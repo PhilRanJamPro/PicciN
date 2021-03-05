@@ -27,7 +27,7 @@ def download_file(name):
 @app.route('/')
 def index():
     db = get_db()
-    pictures = db.execute("SELECT path FROM posts")
+    pictures = db.execute("SELECT DISTINCT path FROM posts ORDER BY id DESC")
     return render_template('index.html', all_pictures=pictures, title="HOT")
 
 
@@ -59,17 +59,22 @@ def upload_file():
 def show_pic(path):
     db = get_db()
     if path in cat:
-        cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
+        cat_pictures = db.execute("SELECT DISTINCT path FROM posts WHERE category=?", [path])
         return render_template('index.html', all_pictures=cat_pictures, title=path)
     else:
         if "('" not in path: #trouver un meilleur moyen de gérer ce cas
             url = path
         else:
             url = path[2:-3]
-        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url]).fetchall()
+        comm = db.execute("SELECT content FROM commentaries WHERE path=?", [url]).fetchall()
+        foo = []
+        for items in comm:
+            foo.append(items[0])
+        print(foo)
+        pictures = db.execute("SELECT DISTINCT path FROM posts WHERE path=?", [url]).fetchall()
         titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
         a = titre.fetchone()
-        return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
+        return render_template('index.html', all_pictures=pictures, title=a[0], commentaires=foo, show_comment=1)
 
 @app.route("/show_comment/<path>", methods=["POST"])
 def show_comment(path):
