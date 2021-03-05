@@ -82,17 +82,9 @@ def post_comment(url):
         print(url)
         print(commentaire)
         db = get_db()
-<<<<<<< HEAD
-        pictures = db.execute("SELECT id FROM posts WHERE path=?", [url])
-        titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
-        a = titre.fetchone()
-        db.execute("INSERT INTO commentaries (post_id, content, username) VALUES(?, ?)", [url, commentaire])
-    return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
-=======
         db.execute("INSERT INTO commentaries (path, content) VALUES (?, ?)", [url, commentaire])
         db.commit()
     return render_template('index.html')
->>>>>>> e427afec8a61a74f2e8f4e018e40cd98b30d670c
 
 
 @app.route("/pic_db")
