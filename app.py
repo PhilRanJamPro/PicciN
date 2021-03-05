@@ -1,7 +1,5 @@
 from flask import *
 import sqlite3
-from PIL import Image
-import PIL
 import os
 from werkzeug.utils import secure_filename
 
@@ -64,12 +62,14 @@ def show_pic(path):
         cat_pictures = db.execute("SELECT path FROM posts WHERE category=?", [path])
         return render_template('index.html', all_pictures=cat_pictures, title=path)
     else:
-        url = path[2:-3]
-        
-        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url])
+        if "('" not in path: #trouver un meilleur moyen de gérer ce cas
+            url = path
+        else:
+            url = path[2:-3]
+        pictures = db.execute("SELECT path FROM posts WHERE path=?", [url]).fetchall()
         titre = db.execute("SELECT title FROM posts WHERE path=?", [url])
         a = titre.fetchone()
-        return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1), url
+        return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
 
 @app.route("/show_comment/<path>", methods=["POST"])
 def show_comment(path):
@@ -77,11 +77,9 @@ def show_comment(path):
     commentaire = data['comment']
     db = get_db()
     db.execute("INSERT INTO commentaries (path, content) VALUES (?, ?)", [path, commentaire])
-    pictures = db.execute("SELECT path FROM posts WHERE path=?", [path])
-    titre = db.execute("SELECT title FROM posts WHERE path=?", [path])
-    a = titre.fetchone()
     db.commit()
-    return render_template('index.html', all_pictures=pictures, title=a[0], show_comment=1)
+    print("path:",path)
+    return redirect("/"+path) #redirection vers l'autre décorateur
 
 
 
@@ -89,7 +87,7 @@ def show_comment(path):
 @app.route("/pic_db")
 def pic_db():
     db = get_db()
-    cur = db.execute("SELECT id, path, title, category FROM posts")
+    cur = db.execute("SELECT * FROM posts where path=(?)", ["photo-1506045412240-22980140a405.jpeg"]) #à remettre comme avant
     posts = []
     for post in cur:
         posts.append({"id": post[0], "path": post[1],
